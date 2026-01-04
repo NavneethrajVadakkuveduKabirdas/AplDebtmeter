@@ -1,0 +1,10 @@
+C:\ASM\DebtMeter.Gui\obj\Debug\DebtMeter.Gui.csproj.AssemblyReference.cache
+C:\ASM\DebtMeter.Gui\obj\Debug\DebtMeter.Gui.Form1.resources
+C:\ASM\DebtMeter.Gui\obj\Debug\DebtMeter.Gui.Properties.Resources.resources
+C:\ASM\DebtMeter.Gui\obj\Debug\DebtMeter.Gui.csproj.GenerateResource.cache
+C:\ASM\DebtMeter.Gui\obj\Debug\DebtMeter.Gui.csproj.CoreCompileInputs.cache
+C:\ASM\DebtMeter.Gui\bin\Debug\DebtMeter.Gui.exe.config
+C:\ASM\DebtMeter.Gui\bin\Debug\DebtMeter.Gui.exe
+C:\ASM\DebtMeter.Gui\bin\Debug\DebtMeter.Gui.pdb
+C:\ASM\DebtMeter.Gui\obj\Debug\DebtMeter.Gui.exe
+C:\ASM\DebtMeter.Gui\obj\Debug\DebtMeter.Gui.pdb
