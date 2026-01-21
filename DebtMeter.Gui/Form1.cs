@@ -16,6 +16,8 @@ namespace DebtMeter.Gui
         {
             InitializeComponent();
             SetupChart();
+            SetupDebtGauge();
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
         }
 
         // ---------- Button handler wired in Form1.Designer.cs ----------
@@ -86,6 +88,8 @@ namespace DebtMeter.Gui
                 // Visualize in grid + chart
                 ShowInGrid(rows, debt, rate, projectedAnnual);
                 ShowInChart(rows, debt, projectedAnnual);
+
+                UpdateDebtGauge(rows, debt);
 
                 Log("Done.");
             }
@@ -175,6 +179,66 @@ namespace DebtMeter.Gui
                 int year = rows[i].Year;
                 sDebt.Points.AddXY(year, debt[i]);
                 sProj.Points.AddXY(year, projectedAnnual[i]);
+            }
+        }
+
+        
+
+        // ---------- Debt Gauge ----------
+        private void SetupDebtGauge()
+        {
+            // Designer creates debtGauge; we only set dynamic runtime settings here.
+            debtGauge.Animated = true;
+            debtGauge.AnimationSpeed = 0.12;
+            debtGauge.UnitText = "USD";
+            debtGauge.ShowGDPRing = true;
+            debtGauge.AutoScaleGDPRing = true;
+            debtGauge.GDPRingMaxPercent = 200;
+            debtGauge.GDPGreenLimit = 60;
+            debtGauge.GDPYellowLimit = 100;
+        }
+
+        private void UpdateDebtGauge(List<DebtRow> rows, double[] debt)
+        {
+            if (rows == null || rows.Count == 0) return;
+
+            int i = rows.Count - 1; // latest year
+            double val = debt[i];
+
+            debtGauge.MinValue = 0;
+            debtGauge.MaxValue = Math.Max(val * 1.25, 1);
+            debtGauge.GDP = rows[i].GDP_USD;
+
+            debtGauge.Value = val;
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.CurrentRow == null) return;
+
+                // Grid generated from DataTable in ShowInGrid()
+                object cellDebt = dataGridView1.CurrentRow.Cells["PublicDebt_USD"].Value;
+                object cellGDP = dataGridView1.CurrentRow.Cells["GDP_USD"].Value;
+
+                if (cellDebt == null) return;
+
+                if (double.TryParse(cellDebt.ToString(), out double selectedDebt))
+                {
+                    double selectedGDP = 0;
+                    if (cellGDP != null) double.TryParse(cellGDP.ToString(), out selectedGDP);
+
+                    if (selectedGDP > 0) debtGauge.GDP = selectedGDP;
+
+                    debtGauge.MinValue = 0;
+                    debtGauge.MaxValue = Math.Max(selectedDebt * 1.25, 1);
+                    debtGauge.Value = selectedDebt;
+                }
+            }
+            catch
+            {
+                // ignore UI binding timing issues
             }
         }
 

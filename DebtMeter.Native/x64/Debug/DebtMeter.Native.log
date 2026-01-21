@@ -1,7 +1,2 @@
-﻿  Assembling compute.asm...
-  pch.cpp
-  backend.c
-  dllmain.cpp
-     Creating library C:\ASM\DebtMeter.Gui\x64\Debug\DebtMeter.Native.lib and object C:\ASM\DebtMeter.Gui\x64\Debug\DebtMeter.Native.exp
-  DebtMeter.Native.vcxproj -> C:\ASM\DebtMeter.Gui\x64\Debug\DebtMeter.Native.dll
+﻿  DebtMeter.Native.vcxproj -> D:\Documents\GitHub\AplDebtmeter-main_frontend_completed\mnt\data\AplDebtmeter-main\DebtMeter.Gui\x64\Debug\DebtMeter.Native.dll
           1 file(s) copied.

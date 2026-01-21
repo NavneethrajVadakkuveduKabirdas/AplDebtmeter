@@ -13,6 +13,7 @@ namespace DebtMeter.Gui
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private DebtMeter.Gui.DebtMeterGauge debtGauge;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -33,6 +34,8 @@ namespace DebtMeter.Gui
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+
+            this.debtGauge = new DebtMeter.Gui.DebtMeterGauge();
 
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
@@ -64,9 +67,18 @@ namespace DebtMeter.Gui
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(12, 56);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(960, 300);
+            this.chart1.Size = new System.Drawing.Size(780, 300);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
+
+            // 
+            // debtGauge
+            // 
+            this.debtGauge.Location = new System.Drawing.Point(990, 56);
+            this.debtGauge.Name = "debtGauge";
+            this.debtGauge.Size = new System.Drawing.Size(320, 320);
+            this.debtGauge.TabIndex = 4;
+            this.debtGauge.ShowGDPRing = true;
 
             // 
             // dataGridView1
@@ -79,7 +91,7 @@ namespace DebtMeter.Gui
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(960, 260);
+            this.dataGridView1.Size = new System.Drawing.Size(780, 260);
             this.dataGridView1.TabIndex = 2;
 
             // 
@@ -92,7 +104,7 @@ namespace DebtMeter.Gui
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(960, 120);
+            this.txtLog.Size = new System.Drawing.Size(780, 120);
             this.txtLog.TabIndex = 3;
 
             // 
@@ -100,12 +112,13 @@ namespace DebtMeter.Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 764);
+            this.ClientSize = new System.Drawing.Size(1340, 764);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.btnRun);
-            this.MinimumSize = new System.Drawing.Size(900, 650);
+            this.Controls.Add(this.debtGauge);
+            this.MinimumSize = new System.Drawing.Size(1200, 650);
             this.Name = "Form1";
             this.Text = "DebtMeter";
 
